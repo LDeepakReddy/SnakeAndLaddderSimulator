@@ -17,7 +17,19 @@ function Position(){
     echo "Player started at a $startPosition position\n";
 
     $diceRoll = rand(1,6);
-    echo "Player Position is  : $diceRoll ";
+    echo "Dice Rolled  to : $diceRoll \n";
+    $option = rand(0,2); 
+    if($option == SnakeAndLadder:: SNAKE){
+        echo "Snake\n";
+       $this->position -= $diceRoll;
+    }
+    elseif($option == SnakeAndLadder :: LADDER){
+        echo "Ladder\n";
+        $this->position += $diceRoll;
+    }else{
+        $this->position = $diceRoll;
+    }
+    echo "Position is : $this->position \n";
 }
 
 }
