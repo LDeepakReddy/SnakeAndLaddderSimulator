@@ -27,7 +27,7 @@ class SnakeAndLadder
             if ($option == SnakeAndLadder::SNAKE) {
 
                 if ($this->position < 0) {
-                    $this->position = SnakeAndLadder::START_POSITION; //if he moves below 0, starts from 0.
+                    $this->position = SnakeAndLadder::START_POSITION; //if player moves below 0, starts from 0.
                 } else {
                     $this->position -= $diceRoll;
                     echo "Snake bite at $this->position ";
@@ -35,14 +35,19 @@ class SnakeAndLadder
             } elseif ($option == SnakeAndLadder::LADDER) {
                 //echo "Ladder\n";
                 $this->position += $diceRoll;
-                echo "Ladder option at $this->position ";
+                if ($this->position > SnakeAndLadder::WINNING_POSITION) {
+                    echo " Roll Again Till You Reach 100 Exactly \n ";
+                    $this->position -= $diceRoll;         // if player reaches above 100, will stay at same position
+                } else {
+                    echo "Ladder option at $this->position ";
+                }
             } else {
-                
+
                 echo "No play at $this->position ";
             }
-            echo "\nPlayer current position at $this->position";
-            echo "\nPlayer won a game ";
         }
+        echo "\nPlayer current position at $this->position";
+        echo "\nPlayer won a game ";
     }
 }
 $position = new SnakeAndLadder();
