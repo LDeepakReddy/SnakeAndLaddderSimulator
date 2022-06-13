@@ -8,6 +8,7 @@ class SnakeAndLadder
     const WINNING_POSITION = 100;
 
     public $position = 0;
+    public $diceCount = 0;
 
     function welcome()
     {
@@ -21,6 +22,7 @@ class SnakeAndLadder
 
         echo "Player started at " . SnakeAndLadder::START_POSITION . " position\n ";
         while ($this->position < SnakeAndLadder::WINNING_POSITION) {
+            $this->diceCount++;
             $diceRoll = rand(1, 6);                   // random function to rolling a dice
             echo "\nDice Rolled  to : $diceRoll \n";
             $option = rand(0, 2);                       // options to play
@@ -48,6 +50,7 @@ class SnakeAndLadder
         }
         echo "\nPlayer current position at $this->position";
         echo "\nPlayer won a game ";
+        echo "\n Dice Rolled $this->diceCount times to complete this game ";
     }
 }
 $position = new SnakeAndLadder();
