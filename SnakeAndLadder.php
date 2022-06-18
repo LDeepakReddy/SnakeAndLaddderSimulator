@@ -2,7 +2,10 @@
 
 class SnakeAndLadder
 {
-
+    const NO_PLAY = 0;
+    const SNAKE = 1;
+    const LADDER = 2;
+    
     const START_POSITION = 0;
     const WINNING_POSITION = 100;
 
@@ -27,12 +30,12 @@ class SnakeAndLadder
         //for choosing options randomly
         $options = rand(0, 2);
         switch ($options) {
-            case 0:
-                echo "$this->player has got a no play!!\n$this->player current position is " . $this->position . "\n";
+            case SnakeAndLadder::NO_PLAY :
+                echo "$this->player   No play!!\n$this->player current position is " . $this->position . "\n";
                 $this->position = $this->position;
                 break;
 
-            case 1:
+            case SnakeAndLadder ::SNAKE :
                 echo "$this->player  Snake bite ?? !\n";
                 $this->position -= $this->diceNum;
 
@@ -43,7 +46,7 @@ class SnakeAndLadder
 
                 break;
 
-            case 2:
+            case SnakeAndLadder ::LADDER :
                 echo "$this->player Ladder Reached---\n$this->player can move up $this->diceNum numbers.\n";
 
                 $this->position += $this->diceNum;
@@ -65,10 +68,10 @@ class SnakeAndLadder
 
         while ($this->position != SnakeAndLadder::WINNING_POSITION) {
             $this->diceCount++;
-            echo "Dice count :" . $this->diceCount . "\n";
+            echo "\nDice count :" . $this->diceCount . "\n";
 
 
-            //looping the game with 2 players                               
+            //introduing two players                              
             for ($i = 1; $i <= 2; $i++) {
                 if ($i == 1) {
                     $this->player = "player1";
@@ -86,7 +89,7 @@ class SnakeAndLadder
 
             if ($this->position == SnakeAndLadder::WINNING_POSITION) {
                 echo "$this->player has reached position: $this->position.\n$this->player has won the game!!\n";
-                echo "\nThe number of times the dice rolled is " . $this->diceCount . ". \n";
+                echo "\nThe number of times the dice rolled to complete this game : " . $this->diceCount . ". \n";
                 break;
             }
         }
